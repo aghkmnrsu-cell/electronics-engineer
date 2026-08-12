@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Electronics Engineer – PCB Design Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #0f1220;
+      --card: #171b2e;
+      --text: #e8ebf5;
+      --muted: #a8b0c7;
+      --accent: #4cc9f0;
+      --accent-2: #7209b7;
+      --border: #262b45;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(15, 18, 32, 0.9);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1rem 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      background: #1f2542;
+      text-decoration: none;
+    }
+
+    .btn.accent {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+    }
+
+    .hero-image {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 3;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 1.6rem;
+      max-width: 750px;
+    }
+
+    /* About + Skills */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .skills-list li {
+      list-style: none;
+      color: var(--muted);
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-image {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #0b0e1a;
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .project-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .project-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: #cfd5eb;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: #1f2542;
+      color: #cfd5eb;
+      border: 1px solid var(--border);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.6rem;
+      color: var(--muted);
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f1326;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 2.5rem;
+      }
+      .about-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">Electronics Projects & PCB Design</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Electronics Engineer specializing in projects finished with complete PCB layout</h1>
+      <p>
+        I take hardware ideas from concept and schematic through to production-ready PCB layouts, 
+        with attention to signal integrity, power distribution, and manufacturability.
+      </p>
+      <div class="cta-buttons">
+        <a class="btn accent" href="#projects">View PCB Projects</a>
+        <a class="btn" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <!-- Replace with your PCB render / photo -->
+      <img src="RGB_LED/45755.jpg" alt="PCB layout render" />
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <div class="about-grid">
+      <div class="card">
+        <p style="margin-bottom: 0.8rem;">
+          I’m an electronics engineer focused on designing robust, manufacturable hardware. 
+          My typical workflow includes requirements capture, schematic design, component selection, 
+          PCB stack-up planning, layout, DFM/DRC checks, and handoff to fabrication.
+        </p>
+        <p>
+          I’m particularly interested in mixed-signal boards, power electronics, and embedded systems 
+          where the PCB layout critically impacts performance and reliability.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.6rem;">Key Skills</h3>
+        <ul class="skills-list">
+          <li>Schematic capture (Altium / KiCad / Eagle)</li>
+          <li>Multi-layer PCB layout</li>
+          <li>Impedance control & signal integrity</li>
+          <li>Power plane & decoupling strategy</li>
+          <li>High-speed digital & mixed-signal design</li>
+          <li>DFM/DRC & fabrication handoff</li>
+          <li>BOM creation & component selection</li>
+          <li>Basic firmware bring-up & testing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Electronics & PCB Design-finished Projects</h2>
+    <p class="section-intro">
+      Each project below is design-finished with a complete PCB layout. 
+      Replace the images and descriptions with your own work.
+    </p>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-image">
+          <!-- Replace with your PCB top/bottom/3D render -->
+          <img src="RGB_LED/45787.png" alt="Project 1 PCB layout" />
+        </div>
+        <div class="project-content">
+          <div class="project-title">High-Efficiency LED Driver Board</div>
+          <div class="project-meta">
+            4-layer • 100 × 80 mm • Altium Designer
+          </div>
+          <p class="project-desc">
+            Designed a constant-current LED driver with thermal management, 
+            optimized copper pours for heat dissipation, and careful placement 
+            of power components to minimize EMI.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Power Electronics</span>
+            <span class="tag">Thermal Design</span>
+            <span class="tag">4-layer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="RGB_LED/45789.png" alt="Project 2 PCB layout" />
+        </div>
+        <div class="project-content">
+          <div class="project-title">Mixed-Signal Sensor Interface</div>
+          <div class="project-meta">
+            2-layer • 60 × 60 mm • KiCad
+          </div>
+          <p class="project-desc">
+            Mixed-signal board for precision sensors with separate analog and digital grounds, 
+            filtered supplies, and impedance-controlled traces for an SPI interface.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Mixed-Signal</span>
+            <span class="tag">Analog Front-End</span>
+            <span class="tag">2-layer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="RGB_LED/45816.png" alt="Project 3 PCB layout" />
+        </div>
+        <div class="project-content">
+          <div class="project-title">MCU-Based Control Board</div>
+          <div class="project-meta">
+            4-layer • 90 × 70 mm • Altium Designer
+          </div>
+          <p class="project-desc">
+            STM32-based control board with USB, motor drivers, and multiple connectors. 
+            Focused on clean power distribution, decoupling strategy, and test-point access.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Embedded</span>
+            <span class="tag">Motor Control</span>
+            <span class="tag">4-layer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="RGB_LED/45791.png" alt="Project 4 PCB layout" />
+        </div>
+        <div class="project-content">
+          <div class="project-title">High-Speed Digital Interface Board</div>
+          <div class="project-meta">
+            6-layer • 120 × 80 mm • Altium Designer
+          </div>
+          <p class="project-desc">
+            High-speed digital board with controlled impedance traces, careful stack-up, 
+            and power plane segmentation to support fast interfaces and low-noise analog sections.
+          </p>
+          <div class="project-tags">
+            <span class="tag">High-Speed</span>
+            <span class="tag">Signal Integrity</span>
+            <span class="tag">6-layer</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>
+          I’m open to freelance PCB design work, collaborations, and full-time roles 
+          focused on hardware that goes all the way to a production-ready layout.
+        </p>
+        <p>
+          <strong>Email:</strong> aghkmnrsu@gmail.com<br />
+          <strong>Mobile:</strong> 9971256053<br />
+          <strong>Location:</strong> Delhi, India<br />
+          <strong>LinkedIn / GitHub:</strong> https://github.com/aghkmnrsu-cell
+        </p>
+      </div>
+      <div class="card">
+        <form action="https://formspree.io/your-form-id" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn accent" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Your Name – Electronics Engineer (PCB Design)
+  </footer>
+
+</body>
+</html>
